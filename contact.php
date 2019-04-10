@@ -1,6 +1,6 @@
 <?php
 
-require '../core/about/src/Validation/Validate.php';
+require 'core/about/src/Validation/Validate.php';
 
 use About\Validation;
 
@@ -37,6 +37,7 @@ if(!empty($input)){
     $valid->check($input);
 
     if(empty($valid->errors)){
+      require 'core/mailgun.php';
         $message = "<div class=\"message-success\">Your form has been submitted!</div>";
         //header('Location: thanks.php');
     }else{
