@@ -12,48 +12,65 @@
         <meta name="keywords" content="<?php echo $meta['keywords']; ?>">
     <?php endif; ?>
 
+    <style>
+        body{
+            padding-top: 60px;
+        }
+    </style>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../dist/css/main.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
   
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#d9d5ff;">
-        <a class="navbar-brand">
-        <i class="fas fa-sliders-h"></i> Michael
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #2f168e;">
+        <a class="navbar-brand" href="/">
+        <i class="fas fa-sliders-h"></i>
+          Michael
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link active" href="index.php">Home<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link"
-                    href="resume.php">Resume</a>
-                <a class="nav-item nav-link" href="contact.php">Contact</a>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/resume.php">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users">Users</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact.php">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login.php">Login</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register.php">Register</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout.php">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
-    
-    <main>
-      <?php echo $content; ?>
+
+    <main class="container">
+        <?php echo $content; ?>
     </main>
     
-    <script>
-        var toggleMenu = document.getElementById('toggleMenu');
-        var nav = document.querySelector('nav');
-        toggleMenu.addEventListener(
-          'click',
-          function(){
-            if(nav.style.display=='block'){
-              nav.style.display='none';
-            }else{
-              nav.style.display='block';
-            }
-          }
-        );
-      </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-</html
+</html>
