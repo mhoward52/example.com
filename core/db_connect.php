@@ -1,9 +1,11 @@
 <?php
 
+require '../config/keys.php';
+
 $host = '127.0.0.1';
 $db   = 'bootcamp';
-$user = 'root';
-$pass = 'password';
+$user = DB_USER;
+$pass = DB_PASS;
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

@@ -1,22 +1,65 @@
 <?php
-require '../core/session.php';
+require '../core/bootstrap.php';
+require '../core/db_connect.php';
 
-if(!empty($_POST)){
-    $_SESSION['user'] = [];
-    $_SESSION['user']['id'] = 12345;
-    header('LOCATION: ' . $_POST['goto']);
+$input = filter_input_array(INPUT_POST,[
+    'email'=>FILTER_SANITIZE_EMAIL,
+    'password'=>FILTER_UNSAFE_RAW
+  ]);
+    //var_dump($input);
+if(!empty($input)){
+
+    $input = array_map('trim', $input);
+    $sql='SELECT id, hash FROM users WHERE email=:email';
+
+    $stmt=$pdo->prepare($sql);
+    $stmt->execute([
+        'email'=>$input['email']
+    ]);
+
+    $row=$stmt->fetch();
+        //var_dump($row);
+    if($row){
+        $match = password_verify($input['password'], $row['hash']);
+        //var_dump($match);
+
+        if($match){
+            $_SESSION['user'] = [];
+            $_SESSION['user']['id']=$row['id'];
+            header('LOCATION: ' . $_POST['goto']);
+        }
+    }
 }
-
-$hash = password_hash('12345', PASSWORD_DEFAULT);
-var_dump(password_verify('12345g',$hash));
 
 $meta=[];
 $meta['title']="Login";
 $goto=!empty($_GET['goto'])?$_GET['goto']:'/';
 
 $content=<<<EOT
-<form>
-    <input name="email" value="{$goto}">
+<h1>{$meta['title']}</h1>
+<form method="post" autocomplete="off">
+
+<div class="form-group">
+<label for="email">Email</label>
+<input 
+  class="form-control" 
+  id="email" 
+  name="email" 
+  type="email"
+>
+</div>
+
+<div class="form-group">
+<label for="password">Password</label>
+<input 
+  class="form-control" 
+  id="password" 
+  name="password" 
+  type="password"
+>
+</div>
+
+    <input name="goto" value="{$goto}"type="hidden">
     <input type="submit" class="btn btn-primary">
 </form>
 EOT;
