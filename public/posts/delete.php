@@ -1,6 +1,6 @@
 
 <?php
-require '../../core/bootstrap.php';
+require '../../bootstrap.php';
 include '../../core/db_connect.php';
 
 checkSession();
